@@ -4,13 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Room extends Model
 {
     use HasFactory;
-    protected $fillable = ['room_number', 'floor_number', 'description', 'room_status'];
+    use SoftDeletes;
+
+    protected $table = "rooms";
+    protected $dates = ['deleted_at'];
+    protected $fillable = ['room_number', 'floor_number', 'price', 'description', 'room_status'];
     public function reservations()
     {
-        return $this->hasOne(Reservation::class);
+        return $this->hasMany(Reservation::class);
     }
 }
