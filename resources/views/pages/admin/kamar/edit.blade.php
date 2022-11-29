@@ -23,7 +23,7 @@
             <label for="room_status">Lantai</label>:
             <select name="room_status" id="room_status" value="{{ $room->room_status }}">
                     <option value="" disabled selected>Status Kamar</option>
-                    <option value="@if ">Ada</option>
+                    <option value="Ada ">Ada</option>
                     <option value="Tidak Ada">Tidak Ada</option>
             </select><br>
             <button type="submit">Simpan</button>

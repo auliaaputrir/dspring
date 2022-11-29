@@ -8,12 +8,12 @@ use Illuminate\Http\Request;
 class RoomController extends Controller
 {
     public function index(){
-        return view('pages.kamar.index', [
+        return view('pages.admin.kamar.index', [
             'rooms' => Room::all()
         ]);
     }
     public function create(Request $request){
-        return view('pages.kamar.create');
+        return view('pages.admin.kamar.create');
     }
     public function store(Request $request)
     {
@@ -47,7 +47,7 @@ class RoomController extends Controller
     {
         $room = Room::findOrfail($id);
         // dd($room);
-        return view('pages.kamar.edit', compact('room'));
+        return view('pages.admin.kamar.edit', compact('room'));
         
     }
     public function update(Request $request, $id)

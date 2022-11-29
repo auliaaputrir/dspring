@@ -37,11 +37,18 @@ class LoginController extends Controller
     public function redirectTo()
     {
         if (Auth::user()->role == 'penyewa') {
-            return ('pages.user.dashboard');
+            return ('/penyewa');
+        }
+        if (Auth::user()->role == 'admin') {
+            return ('/admin');
         }
     }
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
     }
+    // public function logout()
+    // {
+
+    // }
 }

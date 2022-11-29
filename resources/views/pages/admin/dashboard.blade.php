@@ -1,7 +1,3 @@
-home aja
-
-
-logout
 @extends('layouts.app')
 
 @section('content')
