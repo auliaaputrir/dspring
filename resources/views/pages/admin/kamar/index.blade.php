@@ -2,6 +2,7 @@
 <html>
     <head>Data Kamar</head>
     <body>
+        <h4><a href="/kamar-create">Tambah  Kamar</a></h4>
         <table border="1" cellpadding="10" cellspacing="0">
             <thead>
                 <th>No</th>

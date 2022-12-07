@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        Tambah kamar
+        Edit kamar
     </head>
     <body>
         

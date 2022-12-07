@@ -37,7 +37,7 @@ class LoginController extends Controller
     public function redirectTo()
     {
         if (Auth::user()->role == 'penyewa') {
-            return ('/penyewa');
+            return ('/');
         }
         if (Auth::user()->role == 'admin') {
             return ('/admin');

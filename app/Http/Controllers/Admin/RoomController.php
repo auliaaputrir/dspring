@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Room;
 use Illuminate\Http\Request;
 
@@ -17,6 +18,9 @@ class RoomController extends Controller
     }
     public function store(Request $request)
     {
+
+
+        
         $request->validate([
             'room_number' => 'required|max:255',
             'floor_number' => 'required|max:255',

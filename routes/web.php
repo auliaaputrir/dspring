@@ -3,11 +3,11 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\RoomController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\DashboardController;
-
+use App\Http\Controllers\Penyewa\ReservationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,9 +22,7 @@ use App\Http\Controllers\Admin\DashboardController;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+
 
 
 Route::prefix('admin')
@@ -32,7 +30,7 @@ Route::prefix('admin')
     ->middleware(['auth', 'admin'])
     ->group(function ()
         {
-            Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+            Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard-admin');Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard-admin');
 
             Route::get('/kamar', [RoomController::class, 'index'])->name('kamar');
             Route::get('/kamar-create', [RoomController::class, 'create'])->name('kamar-create');
@@ -40,6 +38,10 @@ Route::prefix('admin')
             Route::get('/kamar-delete/{id}', [RoomController::class, 'hapus'])->name('kamar-delete');
             Route::get('/kamar-edit/{id}', [RoomController::class, 'edit'])->name('kamar-edit');
             Route::patch('/kamar-update/{id}', [RoomController::class, 'update'])->name('kamar-update');
+
+            Route::get('/reservasi', [App\Http\Controllers\Admin\ReservationController::class, 'index'])->name('reservasi');
+            Route::get('/reservasi-edit/{id}', [App\Http\Controllers\Admin\ReservationController::class, 'edit'])->name('reservasi-edit');
+            Route::patch('/reservasi-update/{id}', [App\Http\Controllers\Admin\ReservationController::class, 'update'])->name('reservasi-update');
         }
     
     );
@@ -49,9 +51,9 @@ Route::prefix('penyewa')
     ->middleware(['auth', 'penyewa'])
     ->group(function ()
     {
-        Route::get('/', function(){
-            return "halo";
-        })->name('dashboard');
+        Route::get('/', [App\Http\Controllers\Penyewa\DashboardController::class, 'index'])->name('dashboard-penyewa');
+        Route::post('/reservasi-store', [ReservationController::class, 'store'])->name('reservasi-store');
+        // Route::get('/reservasi-sukses', [ReservationController::class, 'sukses'])->name('reservasi-sukses');
     }
         
 );
