@@ -15,11 +15,11 @@ class PaymentController extends Controller
     }
     public function store(Request $request){
 
-        dd($request->provement);
+        dd($request->image);
         $request->validate([
             'id_reservation' => 'required',
             'total' => 'required',
-            'provement' => 'required'
+            'image' => 'required'
 
         ]);
     }

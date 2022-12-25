@@ -17,8 +17,8 @@
             <input type="text" value="{{ $reservasi->stay_date }}"><br>
             <label for="total">Total: </label>
             <input type="text" name="total" id="total" value="{{ $reservasi->rooms->price }}"><br>
-            <label for="provement">Bukti Pembayaran</label>
-            <input type="file" id="provement" name="provement">:<br>
+            <label for="image">Bukti Pembayaran</label>
+            <input type="file" id="image" name="image">:<br>
             <button type="submit">Simpan</button>
             
            
