@@ -33,7 +33,7 @@ Route::prefix('admin')
     ->middleware(['auth', 'admin'])
     ->group(function ()
         {
-            Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard-admin');Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard-admin');
+            Route::get('/', [DashboardController::class, 'index'])->name('dashboard-admin');Route::get('/', [DashboardController::class, 'index'])->name('dashboard-admin');
 
             Route::get('/kamar', [RoomController::class, 'index'])->name('kamar');
             Route::get('/kamar-create', [RoomController::class, 'create'])->name('kamar-create');
@@ -42,9 +42,9 @@ Route::prefix('admin')
             Route::get('/kamar-edit/{id}', [RoomController::class, 'edit'])->name('kamar-edit');
             Route::patch('/kamar-update/{id}', [RoomController::class, 'update'])->name('kamar-update');
 
-            Route::get('/reservasi', [App\Http\Controllers\Admin\ReservationController::class, 'index'])->name('reservasi');
-            Route::get('/reservasi-edit/{id}', [App\Http\Controllers\Admin\ReservationController::class, 'edit'])->name('reservasi-edit');
-            Route::put('/reservasi-update/{id}', [App\Http\Controllers\Admin\ReservationController::class, 'update'])->name('reservasi-update');
+            Route::get('/reservasi', [ReservationController::class, 'index'])->name('reservasi');
+            Route::get('/reservasi-edit/{id}', [ReservationController::class, 'edit'])->name('reservasi-edit');
+            Route::put('/reservasi-update/{id}', [ReservationController::class, 'update'])->name('reservasi-update');
         }
     
     );
@@ -54,14 +54,14 @@ Route::prefix('penyewa')
     ->middleware(['auth', 'penyewa'])
     ->group(function ()
     {
-        Route::get('/', [App\Http\Controllers\Penyewa\DashboardController::class, 'index'])->name('dashboard-penyewa');
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard-penyewa');
 
-        Route::get('/reservasi', [App\Http\Controllers\Penyewa\ReservationController::class, 'index'])->name('reservasi-penyewa');
+        Route::get('/reservasi', [ReservationController::class, 'index'])->name('reservasi-penyewa');
         Route::post('/reservasi-store', [ReservationController::class, 'store'])->name('reservasi-store');
         // Route::get('/reservasi-sukses', [ReservationController::class, 'sukses'])->name('reservasi-sukses');
 
-        Route::get('/pembayaran/{id}', [App\Http\Controllers\Penyewa\PaymentController::class, 'index'])->name('pembayaran');
-        Route::post('/pembayaran-create/{id}', [PaymentController::class, 'create'])->name('pembayaran-create');
+        Route::get('/pembayaran/{id}', [PaymentController::class, 'index'])->name('pembayaran');
+        Route::post('/pembayaran-create/{id}', [PaymentController::class, 'store'])->name('pembayaran-create'); #function store bukan create
     }
         
 );
