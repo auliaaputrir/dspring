@@ -18,9 +18,6 @@ class RoomController extends Controller
     }
     public function store(Request $request)
     {
-
-
-        
         $request->validate([
             'room_number' => 'required|max:255',
             'floor_number' => 'required|max:255',

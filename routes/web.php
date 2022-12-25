@@ -7,6 +7,7 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Penyewa\PaymentController;
 use App\Http\Controllers\Penyewa\ReservationController;
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +23,9 @@ use App\Http\Controllers\Penyewa\ReservationController;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::get('/email', function(){
+    return view('mail.email_notification');
+});
 
 
 Route::prefix('admin')
@@ -41,7 +44,7 @@ Route::prefix('admin')
 
             Route::get('/reservasi', [App\Http\Controllers\Admin\ReservationController::class, 'index'])->name('reservasi');
             Route::get('/reservasi-edit/{id}', [App\Http\Controllers\Admin\ReservationController::class, 'edit'])->name('reservasi-edit');
-            Route::patch('/reservasi-update/{id}', [App\Http\Controllers\Admin\ReservationController::class, 'update'])->name('reservasi-update');
+            Route::put('/reservasi-update/{id}', [App\Http\Controllers\Admin\ReservationController::class, 'update'])->name('reservasi-update');
         }
     
     );
@@ -52,8 +55,13 @@ Route::prefix('penyewa')
     ->group(function ()
     {
         Route::get('/', [App\Http\Controllers\Penyewa\DashboardController::class, 'index'])->name('dashboard-penyewa');
+
+        Route::get('/reservasi', [App\Http\Controllers\Penyewa\ReservationController::class, 'index'])->name('reservasi-penyewa');
         Route::post('/reservasi-store', [ReservationController::class, 'store'])->name('reservasi-store');
         // Route::get('/reservasi-sukses', [ReservationController::class, 'sukses'])->name('reservasi-sukses');
+
+        Route::get('/pembayaran/{id}', [App\Http\Controllers\Penyewa\PaymentController::class, 'index'])->name('pembayaran');
+        Route::post('/pembayaran-create/{id}', [PaymentController::class, 'create'])->name('pembayaran-create');
     }
         
 );

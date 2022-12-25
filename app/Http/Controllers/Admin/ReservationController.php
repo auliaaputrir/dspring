@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use App\Models\Room;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
+use App\Mail\ConfirmationEmail;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 
 class ReservationController extends Controller
 {
@@ -23,9 +25,11 @@ class ReservationController extends Controller
         $request->validate([
             'reservation_status' => 'required'
         ]);
+        $reservasi = Reservation::findOrfail($id);
         Reservation::where('id', $id)->update([
             'reservation_status' => $request->reservation_status
         ]);
-        return redirect()->route('reservasi');
+        Mail::to('l200180156@student.ums.ac.id')->send(new ConfirmationEmail($reservasi));
+        return 'sukses';
     }
 }

@@ -23,7 +23,7 @@ halo all
                             <option selected disabled>Pilih Kamar</option>
                             @foreach ($rooms as $room)
                                 <option value="{{ $room->id }}">{{ $room->room_number }}</option>
-                            @endforeach
+                  ~          @endforeach
                         </select><br>
                         <label for="period">Periode</label>
                         <select name="period" id="period">

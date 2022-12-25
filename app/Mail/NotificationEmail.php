@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+// use App\Models\Reservation;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -16,9 +17,10 @@ class NotificationEmail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($res)
     {
-        //
+        $this->reservasi = $res;
+        // $This->
     }
 
     /**
@@ -32,6 +34,13 @@ class NotificationEmail extends Mailable
         ->from('coba.aulia@gmail.com')
         ->to('auliaputrirachmadani@gmail.com')
         ->subject('Pesanan Baru Telah Dibuaat!')
-        ->view('mail\email_notification');
+        ->view('mail\email_notification')
+        ->with([
+            'name' => $this->reservasi->users->name,
+            'room_number' => $this->reservasi->rooms->room_number,
+            'stay_date' => $this->reservasi->stay_date,
+            'period' => $this->reservasi->period
+
+        ]);
     }
 }

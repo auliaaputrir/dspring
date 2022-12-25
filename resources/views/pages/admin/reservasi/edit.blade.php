@@ -12,8 +12,7 @@
         <label for="reservation_status">Status Reservasi</label>
         <select name="reservation_status" id="reservation_status" value="{{ $reservasi->reservation_status }}">
             <option value="" disabled selected>Status Reservasi</option>
-            <option value="Diterima">Diterima</option>
-            <option value="Menunggu">Menunggu</option>
+            <option value="Diterima">Diterima</option>        
             <option value="Ditolak">Ditolak</option>
         </select>
         <button type="submit">Simpan</button>
