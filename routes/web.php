@@ -24,7 +24,7 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/email', function(){
-    return view('mail.email_notification');
+    return view('mail.email');
 });
 
 
@@ -42,9 +42,9 @@ Route::prefix('admin')
             Route::get('/kamar-edit/{id}', [RoomController::class, 'edit'])->name('kamar-edit');
             Route::patch('/kamar-update/{id}', [RoomController::class, 'update'])->name('kamar-update');
 
-            Route::get('/reservasi', [ReservationController::class, 'index'])->name('reservasi');
-            Route::get('/reservasi-edit/{id}', [ReservationController::class, 'edit'])->name('reservasi-edit');
-            Route::put('/reservasi-update/{id}', [ReservationController::class, 'update'])->name('reservasi-update');
+            Route::get('/reservasi', [App\Http\Controllers\Admin\ReservationController::class, 'index'])->name('reservasi');
+            Route::get('/reservasi-edit/{id}', [App\Http\Controllers\Admin\ReservationController::class, 'edit'])->name('reservasi-edit');
+            Route::patch('/reservasi-update/{id}', [App\Http\Controllers\Admin\ReservationController::class, 'update'])->name('reservasi-update');
         }
     
     );

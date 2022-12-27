@@ -17,7 +17,7 @@ class RoomController extends Controller
         return view('pages.admin.kamar.create');
     }
     public function store(Request $request)
-    {
+    { 
         $request->validate([
             'room_number' => 'required|max:255',
             'floor_number' => 'required|max:255',

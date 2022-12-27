@@ -68,7 +68,7 @@ class RegisterController extends Controller
             'role' => 'penyewa',
             'name' => $data['name'],
             'email' => $data['email'],
-            'telephone_number' => '123456',
+            'telephone_number' => $data['telephone_number'],
             'password' => Hash::make($data['password']),
             ''
         ]);

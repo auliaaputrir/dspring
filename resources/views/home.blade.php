@@ -1,4 +1,5 @@
 halo all
+
 @extends('layouts.app')
 
 @section('content')
@@ -23,7 +24,7 @@ halo all
                             <option selected disabled>Pilih Kamar</option>
                             @foreach ($rooms as $room)
                                 <option value="{{ $room->id }}">{{ $room->room_number }}</option>
-                  ~          @endforeach
+                            @endforeach
                         </select><br>
                         <label for="period">Periode</label>
                         <select name="period" id="period">
@@ -32,7 +33,7 @@ halo all
                             <option value="Tahunan">Tahunan</option>
                         </select><br>
                         <label for="stay_date">Mulai ditempati</label>
-                        <input type="date" name="stay_date" id="stay_date">
+                        <input type="date" name="stay_date" id="stay_date" min="{{ Carbon\Carbon::tomorrow()->format('Y-m-d') }}">
                         <br><button type='submit'>Pesan</button>
                     </form>
                 </div>

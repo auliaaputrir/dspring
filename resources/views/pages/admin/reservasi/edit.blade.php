@@ -11,9 +11,8 @@
         @method('patch')
         <label for="reservation_status">Status Reservasi</label>
         <select name="reservation_status" id="reservation_status" value="{{ $reservasi->reservation_status }}">
-            <option value="" disabled selected>Status Reservasi</option>
-            <option value="Diterima">Diterima</option>        
-            <option value="Ditolak">Ditolak</option>
+            <option value="Diterima" {{ $reservasi->reservation_status === 'Diterima' ? 'selected' : '' }}>Diterima</option>        
+            <option value="Ditolak"{{ $reservasi->reservation_status === 'Ditolak' ? 'selected' : '' }}>Ditolak </option>
         </select>
         <button type="submit">Simpan</button>
     </form>

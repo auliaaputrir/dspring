@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Penyewa;
 
 use App\Models\Room;
+use App\Models\User;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
 use App\Mail\NotificationEmail;
@@ -23,9 +24,9 @@ class ReservationController extends Controller
    }
    public function store(Request $request){
       $request->validate([
-        'room_number' => 'required',
-        'period' => 'required',
-        'stay_date' => 'required'
+        'room_number' => 'required|max:255',
+        'period' => 'required|max:255',
+        'stay_date' => 'required|max:255'
 
       ]);
       
@@ -36,13 +37,13 @@ class ReservationController extends Controller
           'stay_date' => $request->stay_date,
           'reservation_status' => 'Menunggu'
         ]);
-  
+        $admin = User::select('email')->where('role', '=', 'admin')->first();
         Room::where('id', $request->room_number)
         ->update([
           'room_status' => 'Tidak Ada'
         ]);
         
-        Mail::to('auliaputrirachmadni@gmail.com')->send(new NotificationEmail($data));
+        Mail::to($admin)->send(new NotificationEmail($data));
         return 'sukses';
       
    }

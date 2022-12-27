@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Room;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
-use App\Mail\ConfirmationEmail;
+use App\Mail\NotificationEmail;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 
@@ -29,7 +29,8 @@ class ReservationController extends Controller
         Reservation::where('id', $id)->update([
             'reservation_status' => $request->reservation_status
         ]);
-        Mail::to('l200180156@student.ums.ac.id')->send(new ConfirmationEmail($reservasi));
+        if($request->reservation_status == 'Diterima')
+        Mail::to('l200180156@student.ums.ac.id')->send(new NotificationEmail($reservasi));
         return 'sukses';
     }
 }

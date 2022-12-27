@@ -14,13 +14,12 @@ class PaymentController extends Controller
         return view('pages.user.pembayaran.index', compact('reservasi'));
     }
     public function store(Request $request, Reservation $id){
-        #apabila di route menggunakan parameter diusahakan function jg menggunakan paramater
         $request->validate([
             'total' => 'required|numeric',
             'image' => 'required|mimes:png,jpg,jpeg|image'
         ]);
         $image = $request->file('image');
-        $name = time().'.'.$image->getClientOriginalExtension(); #generate nama file dgn time() agar tidak terjadi kesamaan penamaan yg mengakibatkan replacement file
+        $name = time().'.'.$image->getClientOriginalExtension();
         
         Payment::create([
             'reservation_id' => $id->id,

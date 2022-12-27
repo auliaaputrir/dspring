@@ -8,7 +8,12 @@
         <form method="post" action="{{ route('kamar-store') }}">
             @csrf
             <label for="room_number">Nomor Kamar</label>:
-            <input type="text" name="room_number" id="room_number"><br>
+            <input type="text" name="room_number" id="room_number" value="{{ old('') }}" class="@error('room_number') is-invalid @enderror"><br>
+            @error('Nomor Kamar')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+            @enderror
             <label for="floor_number">Lantai</label>:
             <select name="floor_number" id="floor_number">
                     <option value="" disabled selected>Lantai</option>

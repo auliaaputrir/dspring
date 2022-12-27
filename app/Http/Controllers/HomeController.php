@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Room;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
@@ -23,12 +25,16 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
-        $rooms = Room::where('room_status', '=', 'Ada')->get();
-        return view('home', [
-            'rooms' => $rooms
-        ]);
-    } 
+    // public function index()
+    // {
+
+    //     $rooms = Room::where('room_status', '=', 'Ada')->get();
+    //     return view('home', [
+    //         'rooms' => $rooms
+    //     ]);
+    // } 
+    public function index(){
+
+    }
 
 }
