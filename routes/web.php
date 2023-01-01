@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Penyewa\PaymentController;
 use App\Http\Controllers\Penyewa\ReservationController;
+use App\Http\Controllers\Admin\ReservationController as Admin;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,9 +43,9 @@ Route::prefix('admin')
             Route::get('/kamar-edit/{id}', [RoomController::class, 'edit'])->name('kamar-edit');
             Route::patch('/kamar-update/{id}', [RoomController::class, 'update'])->name('kamar-update');
 
-            Route::get('/reservasi', [ReservationController::class, 'index'])->name('reservasi');
-            Route::get('/reservasi-edit/{id}', [ReservationController::class, 'edit'])->name('reservasi-edit');
-            Route::put('/reservasi-update/{id}', [ReservationController::class, 'update'])->name('reservasi-update');
+            Route::get('/reservasi', [Admin::class, 'index'])->name('reservasi');
+            Route::get('/reservasi-edit/{id}', [Admin::class, 'edit'])->name('reservasi-edit');
+            Route::put('/reservasi-update/{id}', [Admin::class, 'update'])->name('reservasi-update');
         }
     
     );
