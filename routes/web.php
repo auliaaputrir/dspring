@@ -45,6 +45,10 @@ Route::prefix('admin')
             Route::get('/reservasi', [App\Http\Controllers\Admin\ReservationController::class, 'index'])->name('reservasi');
             Route::get('/reservasi-edit/{id}', [App\Http\Controllers\Admin\ReservationController::class, 'edit'])->name('reservasi-edit');
             Route::patch('/reservasi-update/{id}', [App\Http\Controllers\Admin\ReservationController::class, 'update'])->name('reservasi-update');
+
+            Route::get('/pembayaran', [App\Http\Controllers\Admin\PaymentController::class, 'index'])->name('pembayaran-admin');
+            Route::get('pembayaran-edit/{id}', [App\Http\Controllers\Admin\PaymentController::class, 'edit'])->name('pembayaran-edit');
+            Route::patch('/pembayaran-update/{id}', [App\Http\Controllers\Admin\PaymentController::class, 'update'])->name('pembayaran-update');
         }
     
     );

@@ -25,16 +25,14 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    // public function index()
-    // {
+    public function index()
+    {
 
-    //     $rooms = Room::where('room_status', '=', 'Ada')->get();
-    //     return view('home', [
-    //         'rooms' => $rooms
-    //     ]);
-    // } 
-    public function index(){
+        $rooms = Room::where('room_status', '=', 'Ada')->get();
+        return view('home', [
+            'rooms' => $rooms
+        ]);
+    } 
 
-    }
 
 }

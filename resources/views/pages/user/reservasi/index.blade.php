@@ -28,7 +28,7 @@
                     <td><a href="">Batalkan Pesanan</a></td>        
                         @endif
                         @if ($r->reservation_status == 'Diterima')
-
+ 
                     <td><a href="{{ route('pembayaran', $r->id) }}">Lanjut pembayaran</a></td>
                         @endif
                     {{-- <td><a href="{{ route('kamar-edit', $room->id) }}">Edit</a> | <a href="{{ route('kamar-delete', $room->id) }}" onclick="return confirm('Hapus data kamar?')">Hapus</a></td> --}}

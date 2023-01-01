@@ -30,7 +30,7 @@ class ReservationController extends Controller
             'reservation_status' => $request->reservation_status
         ]);
         if($request->reservation_status == 'Diterima')
-        Mail::to('l200180156@student.ums.ac.id')->send(new NotificationEmail($reservasi));
-        return 'sukses';
-    }
+            Mail::to('l200180156@student.ums.ac.id')->send(new NotificationEmail($reservasi));
+            return 'sukses';
+        }
 }

@@ -368,65 +368,70 @@
 
                                                             <div
                                                                 style="line-height: 140%; text-align: left; word-wrap: break-word;">
-                                                                <p style="font-size: 14px; line-height: 140%;">Nama</p>
+                                                                <p style="font-size: 14px; line-height: 140%;">: Aulia Putri Rachmadani</p>
                                                             </div>
 
                                                         </td>
                                                     </tr>
-                                                </tbody>
-                                            </table>
-
-                                            <table style="font-family:arial,helvetica,sans-serif;" role="presentation"
-                                                cellpadding="0" cellspacing="0" width="100%" border="0">
-                                                <tbody>
                                                     <tr>
                                                         <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;"
                                                             align="left">
 
                                                             <div
                                                                 style="line-height: 140%; text-align: left; word-wrap: break-word;">
-                                                                <p style="font-size: 14px; line-height: 140%;">Nomor
-                                                                    Kamar</p>
+                                                                <p style="font-size: 14px; line-height: 140%;">No Kamar</p>
                                                             </div>
 
                                                         </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                                                        <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;"
+                                                            align="left">
 
-                                            <table style="font-family:arial,helvetica,sans-serif;" role="presentation"
-                                                cellpadding="0" cellspacing="0" width="100%" border="0">
-                                                <tbody>
+                                                            <div
+                                                                style="line-height: 140%; text-align: left; word-wrap: break-word;">
+                                                                <p style="font-size: 14px; line-height: 140%;">: 102</p>
+                                                            </div>
+
+                                                        </td>
+
+                                                    </tr>
                                                     <tr>
                                                         <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;"
                                                             align="left">
 
                                                             <div
                                                                 style="line-height: 140%; text-align: left; word-wrap: break-word;">
-                                                                <p style="font-size: 14px; line-height: 140%;">Tanggal
-                                                                    Masuk</p>
+                                                                <p style="font-size: 14px; line-height: 140%;">Tanggal Masuk</p>
                                                             </div>
 
                                                         </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                                                        <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;"
+                                                            align="left">
 
-                                            <table style="font-family:arial,helvetica,sans-serif;" role="presentation"
-                                                cellpadding="0" cellspacing="0" width="100%" border="0">
-                                                <tbody>
+                                                            <div
+                                                                style="line-height: 140%; text-align: left; word-wrap: break-word;">
+                                                                <p style="font-size: 14px; line-height: 140%;">: 12-06-2022</p>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
                                                     <tr>
                                                         <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;"
                                                             align="left">
 
                                                             <div
                                                                 style="line-height: 140%; text-align: left; word-wrap: break-word;">
-                                                                <p style="font-size: 14px; line-height: 140%;">Periode
-                                                                    Sewa</p>
+                                                                <p style="font-size: 14px; line-height: 140%;">Priode Sewa</p>
                                                             </div>
+                                                        </td>
+                                                        <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;"
+                                                            align="left">
 
+                                                            <div
+                                                                style="line-height: 140%; text-align: left; word-wrap: break-word;">
+                                                                <p style="font-size: 14px; line-height: 140%;">: Bulanan</p>
+                                                            </div>
                                                         </td>
                                                     </tr>
+                                                    
                                                 </tbody>
                                             </table>
 
@@ -437,92 +442,7 @@
                                 </div>
                                 <!--[if (mso)|(IE)]></td><![endif]-->
                                 <!--[if (mso)|(IE)]><td align="center" width="250" style="background-color: #ffffff;width: 250px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;" valign="top"><![endif]-->
-                                <div class="u-col u-col-50"
-                                    style="max-width: 320px;min-width: 250px;display: table-cell;vertical-align: top;">
-                                    <div
-                                        style="background-color: #ffffff;height: 100%;width: 100% !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;">
-                                        <!--[if (!mso)&(!IE)]><!-->
-                                        <div
-                                            style="height: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;">
-                                            <!--<![endif]-->
 
-                                            <table style="font-family:arial,helvetica,sans-serif;" role="presentation"
-                                                cellpadding="0" cellspacing="0" width="100%" border="0">
-                                                <tbody>
-                                                    <tr>
-                                                        <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;"
-                                                            align="left">
-
-                                                            <div
-                                                                style="line-height: 140%; text-align: left; word-wrap: break-word;">
-                                                                <p style="font-size: 14px; line-height: 140%;">:
-                                                                    {{ $name }}</p>
-                                                            </div>
-
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-
-                                            <table style="font-family:arial,helvetica,sans-serif;" role="presentation"
-                                                cellpadding="0" cellspacing="0" width="100%" border="0">
-                                                <tbody>
-                                                    <tr>
-                                                        <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;"
-                                                            align="left">
-
-                                                            <div
-                                                                style="line-height: 140%; text-align: left; word-wrap: break-word;">
-                                                                <p style="font-size: 14px; line-height: 140%;">:
-                                                                    {{ $room_number }}</p>
-                                                            </div>
-
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-
-                                            <table style="font-family:arial,helvetica,sans-serif;" role="presentation"
-                                                cellpadding="0" cellspacing="0" width="100%" border="0">
-                                                <tbody>
-                                                    <tr>
-                                                        <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;"
-                                                            align="left">
-
-                                                            <div
-                                                                style="line-height: 140%; text-align: left; word-wrap: break-word;">
-                                                                <p style="font-size: 14px; line-height: 140%;">:
-                                                                    {{ $stay_date }}</p>
-                                                            </div>
-
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-
-                                            <table style="font-family:arial,helvetica,sans-serif;" role="presentation"
-                                                cellpadding="0" cellspacing="0" width="100%" border="0">
-                                                <tbody>
-                                                    <tr>
-                                                        <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;"
-                                                            align="left">
-
-                                                            <div
-                                                                style="line-height: 140%; text-align: left; word-wrap: break-word;">
-                                                                <p style="font-size: 14px; line-height: 140%;">
-                                                                    {{ $period }}</p>
-                                                            </div>
-
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-
-                                            <!--[if (!mso)&(!IE)]><!-->
-                                        </div>
-                                        <!--<![endif]-->
-                                    </div>
-                                </div>
                                 <!--[if (mso)|(IE)]></td><![endif]-->
                                 <!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->
                             </div>

@@ -38,7 +38,8 @@ class NotificationEmail extends Mailable
             'name' => $this->reservasi->users->name,
             'room_number' => $this->reservasi->rooms->room_number,
             'stay_date' => $this->reservasi->stay_date,
-            'period' => $this->reservasi->period
+            'period' => $this->reservasi->period,
+            'total' => '100000'
 
         ]);
     }

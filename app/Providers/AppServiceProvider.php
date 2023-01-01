@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Jobs\RoomStatusUpdate;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +24,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->app->bindMethod([RoomStatusUpdate::class, 'handle'], function($job, $app){
+            return $job->handle($app->make(AudioProcessor::class));
+        });
     }
 }

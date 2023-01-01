@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Penyewa;
 
+use App\Models\User;
 use App\Models\Payment;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
+use App\Mail\NotificationEmail;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 
 class PaymentController extends Controller
 {
@@ -18,6 +21,8 @@ class PaymentController extends Controller
             'total' => 'required|numeric',
             'image' => 'required|mimes:png,jpg,jpeg|image'
         ]);
+        $data = Reservation::with('payment')->get();
+        dd($data);
         $image = $request->file('image');
         $name = time().'.'.$image->getClientOriginalExtension();
         
@@ -28,6 +33,9 @@ class PaymentController extends Controller
 
         ]);
         $image->move('upload', $name);
-        return 'Hell Yeah!a';
+        // $data = Reservation::with('payment')->get();
+        $admin = User::select('email')->where('role', '=', 'admin')->first();
+        Mail::to($admin)->send(new NotificationEmail($data));
+        return 'sukses';
     }
 }
