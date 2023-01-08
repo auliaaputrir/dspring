@@ -31,7 +31,7 @@ class PaymentController extends Controller
         
         $reservasi = Reservation::with('rooms', 'users')->where('id', '=', $payment->reservation_id)->first();
         // dd($reservasi);
-            Mail::to('auliaputrirachmadani@gmail.com')->send(new NotificationEmail($reservasi));
+            Mail::to($reservasi->users->email)->send(new NotificationEmail($reservasi));
             return 'sukses';
         
     }

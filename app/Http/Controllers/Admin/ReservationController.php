@@ -33,4 +33,9 @@ class ReservationController extends Controller
             Mail::to('l200180156@student.ums.ac.id')->send(new NotificationEmail($reservasi));
             return 'sukses';
         }
+        public function show($id)
+        {
+            $r = Reservation::findOrfail($id);
+            return view('pages.admin.reservasi.detail', compact('r'));
+        }
 }

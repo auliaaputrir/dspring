@@ -12,29 +12,41 @@ use Illuminate\Support\Facades\Mail;
 
 class PaymentController extends Controller
 {
-    public function index($id){
+    public function index($id)
+    {
         $reservasi = Reservation::findOrfail($id);
-        return view('pages.user.pembayaran.index', compact('reservasi'));
+        if ($reservasi->period == 'Bulanan') {
+            $total = $reservasi->rooms->price;
+        }
+        else{
+            $total = $reservasi->rooms->price*12*93.46/100;
+        }
+        $ada = Payment::where('reservation_id', $reservasi->id)->first();
+        $hitung = $ada->count();
+        return view('pages.user.pembayaran.index', compact('reservasi', 'total', 'ada', 'hitung'));
     }
-    public function store(Request $request, Reservation $id){
+    public function store(Request $request, Reservation $id)
+    {
         $request->validate([
             'total' => 'required|numeric',
-            'image' => 'required|mimes:png,jpg,jpeg|image'
+            'image' => 'required|mimes:png,jpg,jpeg|image',
         ]);
-        $data = Reservation::with('payment')->get();
-        dd($data);
+        $data = $id;
+        $data['message1'] = 'Pembayaran reservasi telah dilakukan.';
+        $data['message2'] = 'Lakukan pengecekkan dan segera konfirmasi.';
+        $data['total'] = $request->total;
         $image = $request->file('image');
-        $name = time().'.'.$image->getClientOriginalExtension();
-        
+        $name = time() . '.' . $image->getClientOriginalExtension();
         Payment::create([
             'reservation_id' => $id->id,
-            'total'          => $request->total,
-            'image'      => $name
-
+            'total' => $request->total,
+            'image' => $name,
         ]);
         $image->move('upload', $name);
         // $data = Reservation::with('payment')->get();
-        $admin = User::select('email')->where('role', '=', 'admin')->first();
+        $admin = User::select('email')
+            ->where('role', '=', 'admin')
+            ->first();
         Mail::to($admin)->send(new NotificationEmail($data));
         return 'sukses';
     }

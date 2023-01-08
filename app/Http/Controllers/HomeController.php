@@ -27,12 +27,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-
-        $rooms = Room::where('room_status', '=', 'Ada')->get();
-        return view('home', [
-            'rooms' => $rooms
-        ]);
+        $room_price = Room::select(DB::raw('min(price) as price'))->first();
+        $get_price = $room_price->price;
+        $yearly_price = 12 * $room_price->price * 7.64/100;
+        return view('home', compact('get_price', 'yearly_price'));
     } 
+    public function getfloor(Request $request){
+        $floor_number = $request->getfloor;
+        $rooms = Room::where('floor_number', $floor_number)->get();
+
+        foreach($rooms as $room){
+            echo "<option value='$room->id'>$room->room_number </option>";
+        }
+    }
 
 
 }

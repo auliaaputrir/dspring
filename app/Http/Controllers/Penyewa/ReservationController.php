@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Penyewa;
 
+use Carbon\Carbon;
 use App\Models\Room;
 use App\Models\User;
 use App\Models\Reservation;
@@ -16,18 +17,17 @@ class ReservationController extends Controller
 {
   public function index(){
     $reservasi = Reservation::with('rooms', 'users')->get();
-    // dd($reservasi);
     return view('pages.user.reservasi.index', compact('reservasi'));
 }
    public function create(){
      return view ('pages.user.reservasi.create');
    }
    public function store(Request $request){
+      $min= Carbon::now()->format('Y-m-d');
       $request->validate([
         'room_number' => 'required|max:255',
         'period' => 'required|max:255',
-        'stay_date' => 'required|max:255'
-
+        'stay_date' => 'required|after:'.$min
       ]);
       
         $data = Reservation::create([

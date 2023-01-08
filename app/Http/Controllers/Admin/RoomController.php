@@ -35,14 +35,14 @@ class RoomController extends Controller
             'description' => $request->description,
             'room_status'=> $request->room_status
         ]);
-        return redirect()->route('kamar')->with('success', 'Room created succesfully.');
+        return redirect()->route('kamar')->with(['success' =>'Data Kamar Berhasil di Tambahkan']);
     }
     public function hapus($id)
     {
         $kamar = Room::find($id);
         $kamar->delete();
 
-        return redirect()->route('kamar');
+        return redirect()->route('kamar')->with(['success' => 'Data Kamar Berhasil di Hapus']);
     }
     public function edit($id)
     {
@@ -70,6 +70,6 @@ class RoomController extends Controller
             'description' => $request->description,
             'room_status'=> $request->room_status
         ]);
-        return redirect()->route('kamar');
+        return redirect()->route('kamar')->with(['success' => 'Data Kamar Berhasil di Ubah']);
     }
 }

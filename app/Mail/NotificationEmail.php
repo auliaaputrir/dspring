@@ -17,6 +17,7 @@ class NotificationEmail extends Mailable
      *
      * @return void
      */
+    protected $reservasi;
     public function __construct($res)
     {
         $this->reservasi = $res;
@@ -39,8 +40,9 @@ class NotificationEmail extends Mailable
             'room_number' => $this->reservasi->rooms->room_number,
             'stay_date' => $this->reservasi->stay_date,
             'period' => $this->reservasi->period,
-            'total' => '100000'
-
+            'total' => $this->reservasi->total,
+            'message' => $this->reservasi->message,
+            
         ]);
     }
 }

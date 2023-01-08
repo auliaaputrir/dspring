@@ -204,8 +204,7 @@
                                                             <div
                                                                 style="line-height: 140%; text-align: center; word-wrap: break-word;">
                                                                 <p style="font-size: 14px; line-height: 140%;"><span
-                                                                        style="font-family: Montserrat, sans-serif; font-size: 14px; line-height: 19.6px;">Halo
-                                                                        Admin, reservasi baru telah dibuat</span><span
+                                                                        style="font-family: Montserrat, sans-serif; font-size: 14px; line-height: 19.6px;">{{$message}}</span><span
                                                                         style="font-family: Montserrat, sans-serif; font-size: 14px; line-height: 19.6px;">.</span>
                                                                 </p>
                                                             </div>
@@ -368,7 +367,7 @@
 
                                                             <div
                                                                 style="line-height: 140%; text-align: left; word-wrap: break-word;">
-                                                                <p style="font-size: 14px; line-height: 140%;">: Aulia Putri Rachmadani</p>
+                                                                <p style="font-size: 14px; line-height: 140%;">: {{ $name }}</p>
                                                             </div>
 
                                                         </td>
@@ -388,7 +387,7 @@
 
                                                             <div
                                                                 style="line-height: 140%; text-align: left; word-wrap: break-word;">
-                                                                <p style="font-size: 14px; line-height: 140%;">: 102</p>
+                                                                <p style="font-size: 14px; line-height: 140%;">: {{ $room_number }}</p>
                                                             </div>
 
                                                         </td>
@@ -409,7 +408,7 @@
 
                                                             <div
                                                                 style="line-height: 140%; text-align: left; word-wrap: break-word;">
-                                                                <p style="font-size: 14px; line-height: 140%;">: 12-06-2022</p>
+                                                                <p style="font-size: 14px; line-height: 140%;">: {{ $stay_date }}</p>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -427,7 +426,7 @@
 
                                                             <div
                                                                 style="line-height: 140%; text-align: left; word-wrap: break-word;">
-                                                                <p style="font-size: 14px; line-height: 140%;">: Bulanan</p>
+                                                                <p style="font-size: 14px; line-height: 140%;">{{ $period }}/p>
                                                             </div>
                                                         </td>
                                                     </tr>
