@@ -82,5 +82,64 @@
                         <!-- /.col -->
                       </div>
                       <!-- /.row -->
+
+                      <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title py-2">Daftar Reservasi</h3>
+                                </div>
+    
+                                <div class="card-body">
+                                    <table class="table table-hover table-responsive-xl" id="datatable">
+                                        <thead>
+                                            <th>No</th>
+                                            <th>Nomor Kamar</th>
+                                            <th>Nama</th>
+                                            <th>Periode</th>
+                                            <th>Tanggal Masuk</th>
+                                            <th>Status</th>
+                                            <th>Aksi</th>
+                                        </thead>
+                                        <tbody class="table-striped">
+                                            <tr>
+                                                @forelse ($reservasi as $r)
+                                                    <td>{{ $loop->iteration }}</td>
+                                                    <td>{{ $r->rooms->room_number }}</td>
+                                                    <td>{{ $r->users->name }}</td>
+                                                    <td>{{ $r->period }}</td>
+                                                    <td>{{ $r->stay_date }}</td>
+                                                    <td>
+                                                        <span class="status-kuning">{{ $r->reservation_status }}</span>
+                                                    </td>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <a href="{{ route('detail-reservasi', $r->id) }}" class="btn btn-info ">
+                                                         Detail
+                                                        </a>
+                                                    </td>
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td colspan="8" class="text-center">
+                                                    Data Kosong
+                                                </td>
+                                            </tr>
+                                            @endforelse
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                        </div>
+                        <!-- /.col-md-6 -->
+                      </div>
+
+                    </div>
+                </section>
+            </div>
+        </div>
+
     <!-- /.row -->
 @endsection

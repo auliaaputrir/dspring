@@ -91,143 +91,115 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                @if ($hitung >= 0)
-                                    <div class="row">
-                                        <div class="col-2">
-                                            No Kamar
-                                        </div>
-                                        <div class="col-1">
-                                            :
-                                        </div>
-                                        <div class="col-8">
-                                            {{ $reservasi->rooms->room_number }}
-                                        </div>
+                                <div class="row">
+                                    <div class="col-2">
+                                        No Kamar
                                     </div>
-                                    <div class="row">
-                                        <div class="col-2">
-                                            Periode Sewa
-                                        </div>
-                                        <div class="col-1">
-                                            :
-                                        </div>
-                                        <div class="col-8">
-                                            {{ $reservasi->period }}
-                                        </div>
+                                    <div class="col-1">
+                                        :
                                     </div>
+                                    <div class="col-8">
+                                        {{ $reservasi->rooms->room_number }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-2">
+                                        Periode Sewa
+                                    </div>
+                                    <div class="col-1">
+                                        :
+                                    </div>
+                                    <div class="col-8">
+                                        {{ $reservasi->period }}
+                                    </div>
+                                </div>
 
+                                <div class="row">
+                                    <div class="col-2">
+                                        Tanggal Masuk
+                                    </div>
+                                    <div class="col-1">
+                                        :
+                                    </div>
+                                    <div class="col-8">
+                                        {{ $reservasi->stay_date }}
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
                                     <div class="row">
                                         <div class="col-2">
-                                            Tanggal Masuk
+                                            <label for="total">Total </label>
                                         </div>
                                         <div class="col-1">
                                             :
                                         </div>
-                                        <div class="col-8">
-                                            {{ $reservasi->stay_date }}
+                                        <div class="col-4">
+                                            <input type="text" name="total" id="total"
+                                                class="form-control" style="border: 0; "
+                                                value="{{ $reservasi->payments->total }}" readonly>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-2">
-                                            Total
-                                        </div>
-                                        <div class="col-1">
-                                            :
-                                        </div>
-                                        <div class="col-8">
-                                            {{ number_format($ada->total, 2, ',', '.')}}
-                                        </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-2">
+                                        Status Pembayaran
                                     </div>
-                                    <div class="row">
-                                        <div class="col-2">
-                                            Bukti Pembayaran
-                                        </div>
-                                        <div class="col-1">
-                                            :
-                                        </div>
-                                        <div class="col-8">
-                                            <img src="{{ URL('upload/'.$ada->image)}}" width="300px;">
-                                        </div>
-                                    </div><div class="row">
-                                        <div class="col-2">
-                                            Status Pembayaran
-                                        </div>
-                                        <div class="col-1">
-                                            :
-                                        </div>
-                                        <div class="col-8">
-                                            @if ($ada->payment_status == 'Menunggu')
-                                            <span class="status-kuning"><i
-                                                    class="fas fa-clock"></i>{{ $ada->payment_status}}</span>
-                                        @endif
-                                        @if ($ada->payment_status == 'Diterima')
-                                            <span class="status-hijau"><i class="fas fa-check-circle"></i>
-                                                {{ $ada->payment_status }} </span>
-                                        @endif
-                                        @if ($ada->payment_status == 'Ditolak')
-                                            <span class="status-merah"><i class="fas fa-times-circle"></i>
-                                                {{ $ada->payment_status }} </span>
-                                        @endif
-                                        </div>
+                                    <div class="col-1">
+                                        :
                                     </div>
-                                @else
-                                    <div class="row">
-                                        <div class="col-2">
-                                            No Kamar
-                                        </div>
-                                        <div class="col-1">
-                                            :
-                                        </div>
-                                        <div class="col-8">
-                                            {{ $reservasi->rooms->room_number }}
-                                        </div>
+                                    <div class="col-8">
+                                    @if ($reservasi->payments->payment_status == 'Menunggu')
+                                    <span class="status-kuning"><i
+                                            class="fas fa-clock"></i>{{ $reservasi->payments->payment_status}}</span>
+                                    @elseif ($reservasi->payments->payment_status == 'Terbayar')
+                                        <span class="status-hijau"><i class="fas fa-check-circle"></i>
+                                            {{ $reservasi->payments->payment_status }} </span>
+                                    @elseif ($reservasi->payments->payment_status == 'Ditolak')
+                                        <span class="status-merah"><i class="fas fa-times-circle"></i>
+                                            {{ $reservasi->payments->payment_status }} </span>
+                                    @endif
                                     </div>
-                                    <div class="row">
-                                        <div class="col-2">
-                                            Periode Sewa
+                                </div>
+                                @if ($reservasi->payments->payment_status == "Menunggu")
+                                    @if(!$reservasi->payments->image)
+                                        <form method="POST" action="{{ route('pembayaran-create', $reservasi->id) }}"
+                                            enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-2">
+                                                        <label for="image">Unggah Bukti Pembayaran</label>
+                                                    </div>
+                                                    <div class="col-1 mt-1">
+                                                        :
+                                                    </div>
+                                                    <div class="col-8 mt-1">
+                                                        <input type="file" class="form-control"
+                                                            style="border: 0; margin-left: -10px;" id="image"
+                                                            name="image">
+                                                    </div>
+    
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12 text-center">
+                                                        <button class="btn btn-primary " type="submit">Upload</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    @else
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <img src="{{ asset('upload/'.$reservasi->payments->image) }}" class="img-thumbnail">
+                                            </div>
                                         </div>
-                                        <div class="col-1">
-                                            :
-                                        </div>
-                                        <div class="col-8">
-                                            {{ $reservasi->period }}
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-2">
-                                            Tanggal Masuk
-                                        </div>
-                                        <div class="col-1">
-                                            :
-                                        </div>
-                                        <div class="col-8">
-                                            {{ $reservasi->stay_date }}
-                                        </div>
-                                    </div>
-
+                                    @endif
+                                @elseif($reservasi->payments->payment_status == "Ditolak")
                                     <form method="POST" action="{{ route('pembayaran-create', $reservasi->id) }}"
                                         enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-2">
-                                                    <label for="total">Total </label>
-                                                </div>
-                                                <div class="col-1">
-                                                    :
-                                                </div>
-                                                <div class="col-4">
-                                                    <input type="text" name="total" id="total"
-                                                        class="form-control" style="border: 0; "
-                                                        value="{{ $total }}" readonly>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="form-group">
-
-
                                             <div class="row">
                                                 <div class="col-2">
                                                     <label for="image">Unggah Bukti Pembayaran</label>
@@ -249,10 +221,8 @@
                                             </div>
                                         </div>
                                     </form>
+                                @endif
                             </div>
-                            @endif
-
-
                         </div>
                     </div>
                 </div>

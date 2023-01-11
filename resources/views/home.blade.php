@@ -467,31 +467,29 @@
 </script>
 <script>
     $(function() {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $("meta[name='csrf-token']").attr('content')
-            }
-        });
         $(function() {
             $('#floor_number').on('change', function() {
-                let get_floor = $('#floor_number').val()
-
-                $.ajax({
-                    type: 'POST',
-                    URL: '{{ route('getfloornumber') }}',
-                    data: {
-                        get_floor: get_floor
-                    },
-                    cache: false,
-
-                    success: function(msg) {
-                        $('#room_number').html(msg);
-                    },
-                    error: function(data) {
-                        console.log('error:', data)
-                    }
-
-                });
+                let val = $(this).val()
+                if(val){
+                    $.ajax({
+                        type: 'POST',
+                        url: '{{ route('getfloornumber') }}',
+                        data: {getfloor : val},
+                        headers: { 'X-CSRF-TOKEN': $("meta[name='csrf-token']").attr('content') },
+                        dataType: 'json',
+                        success: function(data) {
+                            $('#room_number').empty()
+                            $('#room_number').append(new Option('Pilih Kamar', ''))
+                            $("#room_number option[value='']").attr("disabled", "disabled");
+                            data.forEach(el => {
+                                $('#room_number').append(new Option(el.room_number, el.id))
+                            });
+                        },
+                        error: function(xhr, status, error){
+                            console.error(xhr.responseText);
+                        }
+                    });
+                }
             });
         })
     });
@@ -499,48 +497,3 @@
 
 
 </html>
-
-{{-- halo all
-
-@extends('layouts.app')
-
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dspring web</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                    
-                    
-                    <form method="post" action="{{ route('reservasi-store') }}">
-                        @csrf
-                        <label for="room">Room</label>
-                        <select name="room_number" name="room_number" id="room_number">
-                            <option selected disabled>Pilih Kamar</option>
-                            @foreach ($rooms as $room)
-                                <option value="{{ $room->id }}">{{ $room->room_number }}</option>
-                            @endforeach
-                        </select><br>
-                        <label for="period">Periode</label>
-                        <select name="period" id="period">
-                            <option value="" disabled selected>Periode</option>
-                            <option value="Bulanan">Bulanan</option>
-                            <option value="Tahunan">Tahunan</option>
-                        </select><br>
-                        <label for="stay_date">Mulai ditempati</label>
-                        <input type="date" name="stay_date" id="stay_date" min="{{ Carbon\Carbon::tomorrow()->format('Y-m-d') }}">
-                        <br><button type='submit'>Pesan</button>
-                    </form>
-                </div>
-            </div>
-        </div> --}}
-{{-- </div>
-</div>
-@endsection --}}

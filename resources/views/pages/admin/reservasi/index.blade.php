@@ -99,8 +99,6 @@
                                                         <span class="status-merah">
                                                             {{ $r->reservation_status }} </span>
                                                     @endif
-                                                    <a href="{{ route('reservasi-edit', $r->id) }}" ><br>
-                                                        <i class="fas fa-edit"></i></a>
                                                 </td>
                                                 </td>
                                                 <td class="text-center">

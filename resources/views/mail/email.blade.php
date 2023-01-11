@@ -185,8 +185,7 @@
                                                                 style="line-height: 140%; text-align: center; word-wrap: break-word;">
                                                                 <p style="font-size: 14px; line-height: 140%;"><span
                                                                         style="font-size: 18px; line-height: 25.2px; font-family: Montserrat, sans-serif;"><strong><span
-                                                                                style="line-height: 25.2px; font-size: 18px;">Reservasi
-                                                                                Baru!</span></strong></span></p>
+                                                                                style="line-height: 25.2px; font-size: 18px;">{{$reservasi->message}}</span></strong></span></p>
                                                             </div>
 
                                                         </td>
@@ -204,7 +203,7 @@
                                                             <div
                                                                 style="line-height: 140%; text-align: center; word-wrap: break-word;">
                                                                 <p style="font-size: 14px; line-height: 140%;"><span
-                                                                        style="font-family: Montserrat, sans-serif; font-size: 14px; line-height: 19.6px;">{{$message}}</span><span
+                                                                        style="font-family: Montserrat, sans-serif; font-size: 14px; line-height: 19.6px;">Segera Lakukan Konfirmasi Pada Sistem Pemesanan</span><span
                                                                         style="font-family: Montserrat, sans-serif; font-size: 14px; line-height: 19.6px;">.</span>
                                                                 </p>
                                                             </div>
@@ -367,7 +366,7 @@
 
                                                             <div
                                                                 style="line-height: 140%; text-align: left; word-wrap: break-word;">
-                                                                <p style="font-size: 14px; line-height: 140%;">: {{ $name }}</p>
+                                                                <p style="font-size: 14px; line-height: 140%;">: {{ $reservasi->users->name }}</p>
                                                             </div>
 
                                                         </td>
@@ -387,7 +386,7 @@
 
                                                             <div
                                                                 style="line-height: 140%; text-align: left; word-wrap: break-word;">
-                                                                <p style="font-size: 14px; line-height: 140%;">: {{ $room_number }}</p>
+                                                                <p style="font-size: 14px; line-height: 140%;">: {{ $reservasi->rooms->room_number }}</p>
                                                             </div>
 
                                                         </td>
@@ -408,7 +407,7 @@
 
                                                             <div
                                                                 style="line-height: 140%; text-align: left; word-wrap: break-word;">
-                                                                <p style="font-size: 14px; line-height: 140%;">: {{ $stay_date }}</p>
+                                                                <p style="font-size: 14px; line-height: 140%;">: {{ $reservasi->stay_date }}</p>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -426,7 +425,7 @@
 
                                                             <div
                                                                 style="line-height: 140%; text-align: left; word-wrap: break-word;">
-                                                                <p style="font-size: 14px; line-height: 140%;">{{ $period }}/p>
+                                                                <p style="font-size: 14px; line-height: 140%;">{{ $reservasi->period }}</p>
                                                             </div>
                                                         </td>
                                                     </tr>

@@ -30,19 +30,12 @@ class NotificationEmail extends Mailable
      * @return $this
      */
     public function build()
-    {
-        return $this
+    {   return $this
         ->from('coba.aulia@gmail.com')
-        ->subject('Pesanan Baru Telah Dibuaat!')
+        ->subject($this->reservasi->message)
         ->view('mail\email')
         ->with([
-            'name' => $this->reservasi->users->name,
-            'room_number' => $this->reservasi->rooms->room_number,
-            'stay_date' => $this->reservasi->stay_date,
-            'period' => $this->reservasi->period,
-            'total' => $this->reservasi->total,
-            'message' => $this->reservasi->message,
-            
+            'reservasi' => $this->reservasi
         ]);
     }
 }

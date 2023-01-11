@@ -19,7 +19,8 @@ class DashboardController extends Controller
                         ->select('rooms.room_number', 'reservations.stay_date', 'reservations.period')
                         ->where('rooms.room_status', '=', 'Tidak Ada')->get()->count();
         $reservations_not_confirmed = Reservation::where('reservation_status', 'Menunggu')->get()->count();
-        $payment_not_confirmed = Payment::where('payment_status', 'Menunggu')->get()->count();
-        return view('pages.admin.dashboard', compact('rooms', 'reservations', 'reservations_not_confirmed', 'payment_not_confirmed'));
+        $payment_not_confirmed = Payment::where('payment_status', 'Menunggu')->where('image', '!=', null)->get()->count();
+        $reservasi = Reservation::with('rooms', 'users')->where('reservation_status', '=', 'Menunggu')->get();
+        return view('pages.admin.dashboard', compact('rooms', 'reservations', 'reservations_not_confirmed', 'payment_not_confirmed', 'reservasi'));
     }
 }

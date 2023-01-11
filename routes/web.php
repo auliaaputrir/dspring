@@ -22,8 +22,8 @@ use App\Http\Controllers\Penyewa\ReservationController;
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::post('/getfloornumber', [HomeController::class, 'getfloornumber'])->name('getfloornumber');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::post('/getfloornumber', [HomeController::class, 'getfloor'])->name('getfloornumber');
 Route::get('/email', function(){
     return view('mail.email');
 });
@@ -50,7 +50,7 @@ Route::prefix('admin')
 
             Route::get('/pembayaran', [App\Http\Controllers\Admin\PaymentController::class, 'index'])->name('pembayaran-admin');
             Route::get('pembayaran-edit/{id}', [App\Http\Controllers\Admin\PaymentController::class, 'edit'])->name('pembayaran-edit');
-            Route::patch('/pembayaran-update/{id}', [App\Http\Controllers\Admin\PaymentController::class, 'update'])->name('pembayaran-update');
+            Route::patch('/pembayaran-update/{payment}', [App\Http\Controllers\Admin\PaymentController::class, 'update'])->name('pembayaran-update');
         }
     
     );

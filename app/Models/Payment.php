@@ -11,6 +11,6 @@ class Payment extends Model
     protected $fillable = ['reservation_id', 'total', 'image']; #reservation_id bukan reservations_id
 
     public function reservations(){
-        return $this->belongsTo(Reservation::class);
+        return $this->belongsTo(Reservation::class, 'reservation_id');
     }
 }

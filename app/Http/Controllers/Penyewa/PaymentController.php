@@ -15,39 +15,28 @@ class PaymentController extends Controller
     public function index($id)
     {
         $reservasi = Reservation::findOrfail($id);
-        if ($reservasi->period == 'Bulanan') {
-            $total = $reservasi->rooms->price;
-        }
-        else{
-            $total = $reservasi->rooms->price*12*93.46/100;
-        }
-        $ada = Payment::where('reservation_id', $reservasi->id)->first();
-        $hitung = $ada->count();
-        return view('pages.user.pembayaran.index', compact('reservasi', 'total', 'ada', 'hitung'));
+        return view('pages.user.pembayaran.index', compact('reservasi'));
     }
     public function store(Request $request, Reservation $id)
     {
         $request->validate([
-            'total' => 'required|numeric',
             'image' => 'required|mimes:png,jpg,jpeg|image',
         ]);
         $data = $id;
-        $data['message1'] = 'Pembayaran reservasi telah dilakukan.';
-        $data['message2'] = 'Lakukan pengecekkan dan segera konfirmasi.';
-        $data['total'] = $request->total;
         $image = $request->file('image');
-        $name = time() . '.' . $image->getClientOriginalExtension();
-        Payment::create([
-            'reservation_id' => $id->id,
-            'total' => $request->total,
-            'image' => $name,
-        ]);
+        if(!$id->payments->image){
+            $name = time() . '.' . $image->getClientOriginalExtension();
+        }else{
+            $name = $id->payments->image;
+        }
+        Payment::where('reservation_id', $id->id)
+                ->update([
+                    'image' => $name,
+                    'payment_status' => 'Menunggu'
+                ]);
+        $data['message'] = 'Pembayaran reservasi telah dilakukan.';
         $image->move('upload', $name);
-        // $data = Reservation::with('payment')->get();
-        $admin = User::select('email')
-            ->where('role', '=', 'admin')
-            ->first();
-        Mail::to($admin)->send(new NotificationEmail($data));
-        return 'sukses';
+        Mail::to('alputrir@gmail.com')->send(new NotificationEmail($data));
+        return redirect(route('pembayaran', $id->id));
     }
 }

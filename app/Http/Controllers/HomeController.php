@@ -32,13 +32,12 @@ class HomeController extends Controller
         $yearly_price = 12 * $room_price->price * 7.64/100;
         return view('home', compact('get_price', 'yearly_price'));
     } 
+
     public function getfloor(Request $request){
         $floor_number = $request->getfloor;
-        $rooms = Room::where('floor_number', $floor_number)->get();
+        $rooms = Room::where([['floor_number', $floor_number], ['room_status', 'Ada']])->get();
 
-        foreach($rooms as $room){
-            echo "<option value='$room->id'>$room->room_number </option>";
-        }
+        return json_encode($rooms);
     }
 
 

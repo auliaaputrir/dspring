@@ -44,7 +44,7 @@
                     </a>
                 </li>
                
-                <li class="nav-item" style="margin-top: 400px">
+                <li class="nav-item h-100">
                     <a href="{{ route('logout') }}" class="nav-link"
                                                 onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();"> <i class="nav-icon fas fa-sign-out-alt"></i>

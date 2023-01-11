@@ -25,14 +25,9 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title py-2">Daftar Kamar</h3>
-                                {{-- <div class="float-sm-right">
-            <a href="{{ route('pembayaran-edit', $pay->id) }}" class="btn mybtn">Tambah Data</a>
-          </div>    --}}
                             </div>
 
                             <div class="card-body">
-
-                                {{-- START FLASH MESSAGE --}}
                                 <div class="row">
                                     <div class="col-lg-4 col-md-12 col-sm-12">
                                         @if ($message = Session::get('success'))
@@ -80,7 +75,7 @@
                                         <th>Total Bayar</th>
                                         <th>Tanggal Bayar</th>
                                         <th>Status</th>
-                                        <th>Bukti Pembayaran</th>
+                                        <th>Aksi</th>
                                     </thead>
                                     <tbody class="table-striped">
                                         <tr>
@@ -106,9 +101,10 @@
                                                         <span class="status-hijau">{{ $pay->payment_status }}
                                                         </span>
                                                     @endif
-                                                    <a href="{{ route('pembayaran-edit', $pay->id) }}"><i class="fas fa-edit"></i></a>
                                                 </td>
-                                                <td><img src="{{ URL('upload/' . $pay->image) }}" alt=""></td>
+                                                <td>
+                                                    <a href="{{ route('pembayaran-edit', $pay->id) }}" class="btn btn-warning text-white">Detail</a>
+                                                </td>
                                         </tr>
                                     @empty
                                         <tr>

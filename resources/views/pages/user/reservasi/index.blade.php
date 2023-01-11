@@ -147,16 +147,28 @@
                                         {{ $r->stay_date }}
                                     </div>
                                 </div>
+                                @if ($r->payments)    
+                                    <div class="row">
+                                        <div class="col-2">
+                                            Pembayaran
+                                        </div>
+                                        <div class="col-1">
+                                            :
+                                        </div>
+                                        <div class="col-8">
+                                            {{ $r->payments->payment_status }}
+                                        </div>
+                                    </div>
+                                @endif
                                 <div class="row">
                                     <div class="col-12 text-center">
-                                        @if ($r->reservation_status !== 'Diterima')
+                                        @if ($r->reservation_status != 'Diterima')
                                             <a href="#" class="btn btn-primary disabled ">Lanjutkan
                                                 Pembayaran</a>
                                         @else
                                             <a href="{{ route('pembayaran', $r->id) }}"
                                                 class="btn btn-primary">Lanjutkan Pembayaran</a>
                                         @endif
-
                                     </div>
                                 </div>
 
