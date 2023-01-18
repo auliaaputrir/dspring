@@ -23,7 +23,7 @@ use App\Http\Controllers\Penyewa\ReservationController;
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::post('/getfloornumber', [HomeController::class, 'getfloor'])->name('getfloornumber');
+Route::post('/getfloornumber', [HomeController::class, 'getfloor'])->name('getfloor');
 Route::get('/email', function(){
     return view('mail.email');
 });
@@ -46,10 +46,10 @@ Route::prefix('admin')
             Route::get('/reservasi', [App\Http\Controllers\Admin\ReservationController::class, 'index'])->name('reservasi');
             Route::get('/reservasi-edit/{id}', [App\Http\Controllers\Admin\ReservationController::class, 'edit'])->name('reservasi-edit');
             Route::patch('/reservasi-update/{id}', [App\Http\Controllers\Admin\ReservationController::class, 'update'])->name('reservasi-update');
-            Route::get('/detail-reservasi/{id}', [App\Http\Controllers\Admin\ReservationController::class, 'show'])->name('detail-reservasi');
+            Route::get('/reservasi-detail/{id}', [App\Http\Controllers\Admin\ReservationController::class, 'show'])->name('reservasi-detail');
 
             Route::get('/pembayaran', [App\Http\Controllers\Admin\PaymentController::class, 'index'])->name('pembayaran-admin');
-            Route::get('pembayaran-edit/{id}', [App\Http\Controllers\Admin\PaymentController::class, 'edit'])->name('pembayaran-edit');
+            Route::get('/pembayaran-edit/{id}', [App\Http\Controllers\Admin\PaymentController::class, 'edit'])->name('pembayaran-edit');
             Route::patch('/pembayaran-update/{payment}', [App\Http\Controllers\Admin\PaymentController::class, 'update'])->name('pembayaran-update');
         }
     

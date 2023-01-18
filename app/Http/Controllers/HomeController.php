@@ -35,7 +35,7 @@ class HomeController extends Controller
 
     public function getfloor(Request $request){
         $floor_number = $request->getfloor;
-        $rooms = Room::where([['floor_number', $floor_number], ['room_status', 'Ada']])->get();
+        $rooms = Room::where([['floor_number', $floor_number], ['room_status', 'Tersedia']])->get();
 
         return json_encode($rooms);
     }

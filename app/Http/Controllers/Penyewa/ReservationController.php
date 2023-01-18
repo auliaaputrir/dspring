@@ -47,10 +47,11 @@ class ReservationController extends Controller
     
     Room::where('id', $request->room_number)
     ->update([
-      'room_status' => 'Tidak Ada'
+      'room_status' => 'Terpesan'
     ]);
     
-    $data['message'] = 'Pemasan Baru telah dilakukan';
+    $data['message'] = 'Pemesanan Baru Telah Dilakukan.';
+    $data['message2'] = 'Segera Lakukan Konfirmasi Pada Sistem Pemesanan.';
     
     Mail::to($admin)->send(new NotificationEmail($data));
     return redirect('/penyewa/reservasi');

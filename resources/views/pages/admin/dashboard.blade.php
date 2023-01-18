@@ -110,11 +110,14 @@
                                                     <td>{{ $r->period }}</td>
                                                     <td>{{ $r->stay_date }}</td>
                                                     <td>
-                                                        <span class="status-kuning">{{ $r->reservation_status }}</span>
+                                                        <div class="row mb-1">
+                                                          
+                                                          <span class="status-kuning">{{ $r->reservation_status }}</span>
+                                                        </div>
                                                     </td>
                                                     </td>
                                                     <td class="text-center">
-                                                        <a href="{{ route('detail-reservasi', $r->id) }}" class="btn btn-info ">
+                                                        <a href="{{ route('reservasi-detail', $r->id) }}" class="btn btn-info ">
                                                          Detail
                                                         </a>
                                                     </td>
@@ -140,6 +143,6 @@
                 </section>
             </div>
         </div>
-
+    </div>
     <!-- /.row -->
 @endsection

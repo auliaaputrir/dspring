@@ -3,11 +3,16 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-8 mt-5">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
+                    <div class="login-logo">
+                        <a href='#' class="brand-link">
+                            <img src="{{ url('assets/dist/img/logo2.png') }}" alt="Logo D'Spring" style="width: 200px">
+                        </a>
+                    </div>
+                    <h3 class="login-box-msg">Register</h3>
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 

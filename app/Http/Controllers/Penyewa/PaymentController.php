@@ -35,6 +35,7 @@ class PaymentController extends Controller
                     'payment_status' => 'Menunggu'
                 ]);
         $data['message'] = 'Pembayaran reservasi telah dilakukan.';
+        $data['message2'] = 'Segera Lakukan Konfirmasi Pada Sistem Pemesanan.';
         $image->move('upload', $name);
         Mail::to('alputrir@gmail.com')->send(new NotificationEmail($data));
         return redirect(route('pembayaran', $id->id));

@@ -91,12 +91,14 @@
                                         <td>{{ $room->price }}</td>
                                         <td width="350px">{{ $room->description }}</td>
                                         <td class="text-center">
-                                            @if ($room->room_status == 'Ada')
-                                                <span class="status-hijau"><i class="fas fa-check"></i> Ada </span>
+                                            <div class="row mb-1 text-center">
+                                            @if ($room->room_status == 'Tersedia')
+                                                <span class="status-hijau"><i class="fas fa-check"></i> Tersedia </span>
                                             @endif
-                                            @if ($room->room_status == 'Tidak Ada')
-                                                <span class="status-merah"><i class="fas fa-times"></i>  Tidak Ada </span>
+                                            @if ($room->room_status == 'Terpesan')
+                                                <span class="status-biru"><i class="fas fa-times"></i>  Terpesan </span>
                                             @endif
+                                            </div>
                                         </td>
                                         <td class="text-center">
                                             <a href="{{ route('kamar-edit', $room->id) }}" class="btn btn-info ">

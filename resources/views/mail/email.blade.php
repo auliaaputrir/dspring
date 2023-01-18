@@ -160,8 +160,8 @@
                                                                         align="center">
 
                                                                         <img align="center" border="0"
-                                                                            src="{{ URL('assets/img/logo.png') }}"
-                                                                            alt="Cart Icon" title="Cart Icon"
+                                                                            src="{{ URL('assets/dist/img/logo.png') }}"
+                                                                            alt="D'Spring Logo" title="Logo"
                                                                             style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 14%;max-width: 67.2px;"
                                                                             width="67.2" />
 
@@ -203,8 +203,7 @@
                                                             <div
                                                                 style="line-height: 140%; text-align: center; word-wrap: break-word;">
                                                                 <p style="font-size: 14px; line-height: 140%;"><span
-                                                                        style="font-family: Montserrat, sans-serif; font-size: 14px; line-height: 19.6px;">Segera Lakukan Konfirmasi Pada Sistem Pemesanan</span><span
-                                                                        style="font-family: Montserrat, sans-serif; font-size: 14px; line-height: 19.6px;">.</span>
+                                                                        style="font-family: Montserrat, sans-serif; font-size: 14px; line-height: 19.6px;">{{ $reservasi->message2 }}</span>
                                                                 </p>
                                                             </div>
 
@@ -425,10 +424,30 @@
 
                                                             <div
                                                                 style="line-height: 140%; text-align: left; word-wrap: break-word;">
-                                                                <p style="font-size: 14px; line-height: 140%;">{{ $reservasi->period }}</p>
+                                                                <p style="font-size: 14px; line-height: 140%;">:{{ $reservasi->period }}</p>
                                                             </div>
                                                         </td>
                                                     </tr>
+                                                    @if (isset($reservasi->total))
+                                                    <tr>
+                                                        <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;"
+                                                            align="left">
+
+                                                            <div
+                                                                style="line-height: 140%; text-align: left; word-wrap: break-word;">
+                                                                <p style="font-size: 14px; line-height: 140%;">Total</p>
+                                                            </div>
+                                                        </td>
+                                                        <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;"
+                                                            align="left">
+
+                                                            <div
+                                                                style="line-height: 140%; text-align: left; word-wrap: break-word;">
+                                                                <p style="font-size: 14px; line-height: 140%;">:{{ $reservasi->total }}</p>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    @endif
                                                     
                                                 </tbody>
                                             </table>
@@ -466,7 +485,7 @@
                                             style="height: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;">
                                             <!--<![endif]-->
 
-                                            <table style="font-family:arial,helvetica,sans-serif;" role="presentation"
+                                            {{-- <table style="font-family:arial,helvetica,sans-serif;" role="presentation"
                                                 cellpadding="0" cellspacing="0" width="100%" border="0">
                                                 <tbody>
                                                     <tr>
@@ -488,7 +507,7 @@
                                                         </td>
                                                     </tr>
                                                 </tbody>
-                                            </table>
+                                            </table> --}}
 
                                             <!--[if (!mso)&(!IE)]><!-->
                                         </div>
@@ -523,6 +542,7 @@
                                             <table style="font-family:arial,helvetica,sans-serif;" role="presentation"
                                                 cellpadding="0" cellspacing="0" width="100%" border="0">
                                                 <tbody>
+                                                    @if (isset($reservasi->no_rek))
                                                     <tr>
                                                         <td style="overflow-wrap:break-word;word-break:break-word;padding:34px 10px;font-family:arial,helvetica,sans-serif;"
                                                             align="left">
@@ -531,13 +551,27 @@
                                                                 style="line-height: 140%; text-align: center; word-wrap: break-word;">
                                                                 <p style="font-size: 14px; line-height: 140%;"><span
                                                                         style="font-size: 16px; line-height: 22.4px;"><span
-                                                                            style="font-family: Montserrat, sans-serif; font-size: 16px; line-height: 22.4px;">Lakukan
-                                                                            pengecekan pembayaran sebelum melakukan
-                                                                            konfirmasi!</span></span></p>
+                                                                            style="font-family: Montserrat, sans-serif; font-size: 16px; line-height: 22.4px;">{{ $reservasi->no_rek }}</span></span></p>
                                                             </div>
 
                                                         </td>
                                                     </tr>
+                                                    @else
+                                                    <tr>
+                                                        <td style="overflow-wrap:break-word;word-break:break-word;padding:34px 10px;font-family:arial,helvetica,sans-serif;"
+                                                            align="left">
+
+                                                            <div
+                                                                style="line-height: 140%; text-align: center; word-wrap: break-word;">
+                                                                <p style="font-size: 14px; line-height: 140%;"><span
+                                                                        style="font-size: 16px; line-height: 22.4px;"><span
+                                                                            style="font-family: Montserrat, sans-serif; font-size: 16px; line-height: 22.4px;">D'Spring Kost Putri Eksklusif | WA: 08972850515</span></span></p>
+                                                            </div>
+
+                                                        </td>
+                                                    </tr>
+                                                    @endif
+
                                                 </tbody>
                                             </table>
 

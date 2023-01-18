@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Payment extends Model
 {
     use HasFactory;
-    protected $fillable = ['reservation_id', 'total', 'image']; #reservation_id bukan reservations_id
+    protected $fillable = ['reservation_id', 'total', 'image']; 
 
     public function reservations(){
         return $this->belongsTo(Reservation::class, 'reservation_id');

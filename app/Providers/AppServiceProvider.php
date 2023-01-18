@@ -24,8 +24,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->app->bindMethod([RoomStatusUpdate::class, 'handle'], function($job, $app){
-            return $job->handle($app->make(AudioProcessor::class));
-        });
+        // $this->app->bindMethod([RoomStatusUpdate::class, 'handle'], function($job, $app){
+        //     return $job->handle($app->make(AudioProcessor::class));
+        // });
+        config(['app.locale' => 'id']);
+        \Carbon\Carbon::setLocale('id');
     }
 }

@@ -24,7 +24,7 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title py-2">Daftar Kamar</h3>
+                                <h3 class="card-title py-2">Daftar Reservasi</h3>
                             </div>
 
                             <div class="card-body">
@@ -88,6 +88,8 @@
                                                 <td>{{ $r->period }}</td>
                                                 <td>{{ $r->stay_date }}</td>
                                                 <td>
+                                                <div class="row mb-1">
+
                                                     @if ($r->reservation_status == 'Menunggu')
                                                         <span class="status-kuning">{{ $r->reservation_status }}</span>
                                                     @endif
@@ -99,10 +101,10 @@
                                                         <span class="status-merah">
                                                             {{ $r->reservation_status }} </span>
                                                     @endif
-                                                </td>
+                                                </div>
                                                 </td>
                                                 <td class="text-center">
-                                                    <a href="{{ route('detail-reservasi', $r->id) }}" class="btn btn-info ">
+                                                    <a href="{{ route('reservasi-detail', $r->id) }}" class="btn btn-primary ">
                                                      Detail
                                                     </a>
                                                 </td>

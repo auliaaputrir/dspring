@@ -34,6 +34,10 @@ class ReservationController extends Controller
 
         if($request->reservation_status == 'Diterima'){
             $reservasi['message'] = 'Reservasi Anda Diterima.';
+            $reservasi['message2'] = "Silakan Melanjutkan Pembayaran Untuk Menyelesaikan Reservasi Anda.";
+            Room::where('id', $id)->update([
+                'room_status' => 'Terpesan'
+            ]);
             if ($reservasi->period == 'Bulanan') {
                 $total = $reservasi->rooms->price;
             }
@@ -44,9 +48,14 @@ class ReservationController extends Controller
                 'reservation_id' => $id,
                 'total'        => $total
             ];
+            $r= Reservation::where('id', $id)->first();
+            $tanggal =date('l, d F Y H:i', strtotime('+3 days', strtotime( $r->created_at )));
+            $reservasi['total'] = $total;
+            $reservasi['no_rek'] = 'Pembayaran melalui rekening BRI a/n Aulia Putri 2097-0100-7454-506 sebelum ' .$tanggal;
             Payment::create($data);
         }else{
-            $reservasi['message'] = 'Reservasi Anda Ditolak';
+            $reservasi['message'] = 'Reservasi Anda Ditolak.';
+            $reservasi['message2'] = 'Silakan coba lagi nanti.';
         }
 
         Mail::to($reservasi->users->email)->send(new NotificationEmail($reservasi));

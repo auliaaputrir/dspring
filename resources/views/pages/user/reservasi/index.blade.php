@@ -177,7 +177,7 @@
                     </div>
                 </div>
             @empty
-                'kosong'
+                Anda belum melakukan reservasi.
             @endforelse
         </div>
     </section>

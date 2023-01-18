@@ -1,6 +1,6 @@
 <aside class="main-sidebar sidebar-light-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{{ route('dashboard-admin') }}" class="brand-link">
+    <a href="/" class="brand-link">
         <img src="{{ url('assets/dist/img/logo.png') }}" alt="Logo Dspring Kost" class="brand-image">
         <span class="brand-text">D'Spring Kos</span>
     </a>
@@ -20,7 +20,7 @@
                     </a>
                 </li>
                 <li class="nav-item active ">
-                    <a href="{{ route('kamar') }}" class="nav-link {{ request()->is('admin/kamar')  ? 'active' : ''  }}">
+                    <a href="{{ route('kamar') }}" class="nav-link {{ request()->is('*/kamar*')  ? 'active' : ''  }}">
                         <i class="nav-icon fas fa-table"></i>
                         <p class="ml-2">
                             Kamar
@@ -28,7 +28,7 @@
                     </a>
                 </li>
                 <li class="nav-item active ">
-                    <a href="{{ route('reservasi') }}" class="nav-link {{ request()->is('admin/reservasi') ? 'active' : ''  }}">
+                    <a href="{{ route('reservasi') }}" class="nav-link {{ request()->is('*/reservasi*') ? 'active' : ''  }}">
                         <i class="nav-icon fas fa-th-list"></i>
                         <p class="ml-2">
                             Reservasi
@@ -36,7 +36,7 @@
                     </a>
                 </li>
                 <li class="nav-item active ">
-                    <a href="{{ route('pembayaran-admin') }}" class="nav-link {{ request()->is('admin/pembayaran') ? 'active' : ''  }}">
+                    <a href="{{ route('pembayaran-admin') }}" class="nav-link {{ request()->is('*/pembayaran*') ? 'active' : ''  }}">
                         <i class="nav-icon fas fa-file-invoice-dollar"></i>
                         <p class="ml-2">
                             Pembayaran

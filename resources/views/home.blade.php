@@ -52,7 +52,7 @@
                     <a class="nav-item nav-link text-dark" href="#kontak-kami">Kontak</a>
                     <a class="nav-item nav-link text-dark" href="#galeri">Galeri</a>
                     @if (!Auth::user())
-                        <a class="nav-item btn tombol text-dark" href="{{ route('login') }}">Login</a>
+                        <a class="nav-item btn tombol text-light" href="{{ route('login') }}">Login</a>
                     @else
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-dark" style="text-transform: none !important;"
@@ -60,7 +60,11 @@
                                 Halo, {{ Auth::user()->name }}
                             </a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="/penyewa/reservasi">Akun Saya</a>
+                                @if(Auth::user()->role == 'admin')
+                                <a class="dropdown-item" href="/admin">Dashboard</a>
+                                @else
+                                <a class="dropdown-item" href="/penyewa/reservasi">Reservasi saya</a>
+                                @endif
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -101,7 +105,7 @@
                 <h2>Fasiltas</h2>
             </div>
 
-            <div class="row">
+            <div class="row ">
                 <div class="col-lg-4 col-md-6 align-items-stretch">
                     <div class="icon-box">
                         <div class="icon"><i class="fas fa-wifi"></i></div>
@@ -221,7 +225,7 @@
                 <div class="col-md-6">
                     <div class="icon-box mb-5">
                         <i class="bi bi-briefcase"></i>
-                        <h3>Bulanan</h4>
+                        <h3>Bulanan</h3>
                             <p>Mulai dari</p>
                             <h4><sup>Rp.</sup>{{ number_format($get_price, 2, ',', '.') }}<sub>/bulan</sub></h4>
                     </div>
@@ -230,7 +234,7 @@
                     <div class="icon-box mb-5 ribbon-corner ribbon-xl">
                         <div class="ribbon ribbon-top-left"><span>Lebih Hemat</span></div>
                         <i class="bi bi-briefcase"></i>
-                        <h3>Tahunan</h4>
+                        <h3 >Tahunan</h3>
                             <p>Mulai dari</p>
                             <h4><sup>Rp.</sup>{{ number_format($yearly_price, 2, ',', '.') }} <sub>/bulan</sub></h4>
                     </div>
@@ -395,7 +399,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group float-left">
+                        <div class="form-group text-center">
                             <button class="btn btn-primary" style="width: 150px;" type='submit'> Pesan</button>
                         </div>
 
@@ -444,13 +448,13 @@
 
                 </div>
     </section>
-    <footer class="mb-3 mt-5">
+    <section id="footer" class=" section-bg mb-3 mt-5">
         <div class="container">
             <div class="copyright">
                 &copy; Copyright <strong><span>D'Spring Kost Putri Eksklusif</span></strong>. All Rights Reserved
             </div>
         </div>
-    </footer>
+    </section>
 </body>
 {{-- Akhir Container --}}
 
@@ -473,7 +477,7 @@
                 if(val){
                     $.ajax({
                         type: 'POST',
-                        url: '{{ route('getfloornumber') }}',
+                        url: '{{ route('getfloor') }}',
                         data: {getfloor : val},
                         headers: { 'X-CSRF-TOKEN': $("meta[name='csrf-token']").attr('content') },
                         dataType: 'json',

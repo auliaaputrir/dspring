@@ -38,8 +38,16 @@ class PaymentController extends Controller
         Payment::where('id', $payment->id)->update([
             'payment_status' => $request->payment_status
         ]);
-
-        $reservasi ['message'] = "Pembayaran Telah Dikonfirmasi"; 
+        if($request->payment_status == 'Terbayar') 
+        {
+            $reservasi ['message'] = "Pembayaran Telah Dikonfirmasi"; 
+            $reservasi ['message2'] = 'Terimakasih telah bergabung bersama kami.';
+        } else {
+            $reservasi['message'] = 'Pembayaran Anda Ditolak.';
+            $reservasi['message2'] = 'Silakan coba lagi.';
+        }
+        
+      
         Mail::to($reservasi->users->email)->send(new NotificationEmail($reservasi));
         return redirect(route('pembayaran-edit', $payment->id));
     }

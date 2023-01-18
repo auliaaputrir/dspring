@@ -132,10 +132,10 @@
                                         class="form-control @error('room_status') is-invalid @enderror" value
                                         id="floor_number">
                                         <option value="" disabled selected>Status Kamar</option>
-                                        <option value="Ada" {{ old('room_status') === 'Ada' ? 'selected' : '' }}>Ada
+                                        <option value="Tersedia" {{ old('room_status') === 'Tersedia' ? 'selected' : '' }}>Tersedia
                                         </option>
-                                        <option value="Tidak Ada"
-                                            {{ old('room_status') === 'Tidak Ada' ? 'selected' : '' }}>Tidak Ada
+                                        <option value="Terpesan"
+                                            {{ old('room_status') === 'Terpesan' ? 'selected' : '' }}>Terpesan
                                         </option>
                                     </select>
                                     @error('Status Kamar')

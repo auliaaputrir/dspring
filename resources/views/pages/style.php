@@ -1,12 +1,4 @@
 <style>
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        font-family: "Raleway", sans-serif;
-    }
 
     .section-bg {
         background-color: #f7fbfe;
@@ -77,7 +69,7 @@
 
     .section-title {
         text-align: center;
-        padding-bottom: 30px;
+        /* padding-bottom: 30px; */
     }
 
     .section-title h2 {
@@ -88,7 +80,7 @@
         position: relative;
     }
 
-    .section-title h2::before {
+    /* .section-title h2::before {
         content: "";
         position: absolute;
         display: block;
@@ -97,9 +89,9 @@
         background: #ddd;
         bottom: 1px;
         left: calc(50% - 60px);
-    }
+    } */
 
-    .section-title h2::after {
+    /* .section-title h2::after {
         content: "";
         position: absolute;
         display: block;
@@ -108,7 +100,7 @@
         background: #6cc643;
         bottom: 0;
         left: calc(50% - 20px);
-    }
+    } */
 
     .section-title p {
         margin-bottom: 0;
@@ -325,12 +317,14 @@
         font-weight: 700;
         margin-bottom: 20px;
         margin-top: -25px;
+        margin-left: 22px;
         font-size: 25px;
     }
 
     .harga .icon-box p {
         margin-top: -20px;
         margin-left: 5px;
+        margin-left: 22px;
     }
 
     .harga .icon-box h4 {
@@ -370,7 +364,7 @@
         z-index: -1;
         content: '';
         display: block;
-        border: 5px solid #2980b9;
+        border: 4px solid #2980b9;
     }
 
     .ribbon span {
@@ -389,8 +383,8 @@
 
     /* top left*/
     .ribbon-top-left {
-        top: -10px;
-        left: -10px;
+        top: -5px;
+        left: 12px;
     }
 
     .ribbon-top-left::before,
@@ -420,6 +414,9 @@
         border-color: none;
         background-color: #33b62e;
         color: #fff;
+        letter-spacing: 0.2ch;
+        text-transform: uppercase;
+
 
     }
 
@@ -437,7 +434,7 @@
 
         }
 
-        .nav-link:hover::after {
+        /* .nav-link:hover::after {
             content: '';
             display: block;
             border-bottom: 3px solid #33b62e;
@@ -445,7 +442,7 @@
             margin: auto;
             padding-bottom: 5px;
             margin-bottom: -8px;
-        }
+        } */
 
         .jumbotron {
             margin-top: -10px;

@@ -156,6 +156,10 @@
                                         <span class="status-hijau"><i class="fas fa-check-circle"></i>
                                             {{ $reservasi->payments->payment_status }} </span>
                                     @elseif ($reservasi->payments->payment_status == 'Ditolak')
+                                        <span class="status-oren"><i class="fas fa-times-circle"></i>
+                                            {{ $reservasi->payments->payment_status }} </span>
+                                   
+                                    @elseif ($reservasi->payments->payment_status == 'Gagal')
                                         <span class="status-merah"><i class="fas fa-times-circle"></i>
                                             {{ $reservasi->payments->payment_status }} </span>
                                     @endif
@@ -163,11 +167,12 @@
                                 </div>
                                 @if ($reservasi->payments->payment_status == "Menunggu")
                                     @if(!$reservasi->payments->image)
+                                        
                                         <form method="POST" action="{{ route('pembayaran-create', $reservasi->id) }}"
                                             enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-group">
-                                                <div class="row">
+                                                <div class="row mt-5">
                                                     <div class="col-2">
                                                         <label for="image">Unggah Bukti Pembayaran</label>
                                                     </div>
@@ -189,7 +194,7 @@
                                             </div>
                                         </form>
                                     @else
-                                        <div class="row">
+                                        <div class="row mt-3">
                                             <div class="col-12">
                                                 <img src="{{ asset('upload/'.$reservasi->payments->image) }}" class="img-thumbnail">
                                             </div>
@@ -201,7 +206,7 @@
                                         @csrf
                                         <div class="form-group">
                                             <div class="row">
-                                                <div class="col-2">
+                                                <div class="col-2 mb-3">
                                                     <label for="image">Unggah Bukti Pembayaran</label>
                                                 </div>
                                                 <div class="col-1 mt-1">

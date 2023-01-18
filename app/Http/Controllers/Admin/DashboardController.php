@@ -17,7 +17,7 @@ class DashboardController extends Controller
         $reservations = DB::table('rooms')
                         ->join('reservations', 'rooms.id', '=', 'reservations.room_id')
                         ->select('rooms.room_number', 'reservations.stay_date', 'reservations.period')
-                        ->where('rooms.room_status', '=', 'Tidak Ada')->get()->count();
+                        ->where('rooms.room_status', '=', 'Terpesan')->get()->count();
         $reservations_not_confirmed = Reservation::where('reservation_status', 'Menunggu')->get()->count();
         $payment_not_confirmed = Payment::where('payment_status', 'Menunggu')->where('image', '!=', null)->get()->count();
         $reservasi = Reservation::with('rooms', 'users')->where('reservation_status', '=', 'Menunggu')->get();

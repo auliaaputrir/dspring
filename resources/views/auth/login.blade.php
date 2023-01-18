@@ -10,7 +10,7 @@
                         <img src="{{ url('assets/dist/img/logo2.png') }}" alt="Logo D'Spring" style="width: 200px">
                     </a>
                 </div>
-                <p class="login-box-msg">Login as Administrator</p>
+                <h3 class="login-box-msg">Login</h3>
 
                 <div class="container-fluid justify-content-center">
                     <form method="POST" action="{{ route('login') }}">
@@ -44,7 +44,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <div class="col-8">
+                            <div class="col-8 mt-2">
                               <div class="icheck-primary">
                                     <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 

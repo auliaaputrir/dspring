@@ -24,7 +24,7 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title py-2">Daftar Kamar</h3>
+                                <h3 class="card-title py-2">Daftar Pembayaran</h3>
                             </div>
 
                             <div class="card-body">
@@ -86,24 +86,27 @@
                                                 <td>{{ $pay->total }}</td>
                                                 <td>{{ $pay->updated_at }}</td>
                                                 <td>
-                                                    @if ($pay->payment_status == 'Menunggu')
-                                                        <span class="status-kuning"> {{ $pay->payment_status }} </span>
-                                                    @endif
-                                                    @if ($pay->payment_status == 'Gagal')
-                                                        <span class="status-merah">{{ $pay->payment_status }}
-                                                        </span>
-                                                    @endif
-                                                    @if ($pay->payment_status == 'Ditolak')
-                                                        <span class="status-orange"> {{ $pay->payment_status }}
-                                                        </span>
-                                                    @endif
-                                                    @if ($pay->payment_status == 'Terbayar')
-                                                        <span class="status-hijau">{{ $pay->payment_status }}
-                                                        </span>
-                                                    @endif
+                                                    <div class="row mb-1 text-align-center">
+
+                                                        @if ($pay->payment_status == 'Menunggu')
+                                                            <span class="status-kuning"> {{ $pay->payment_status }} </span>
+                                                        @endif
+                                                        @if ($pay->payment_status == 'Gagal')
+                                                            <span class="status-merah">{{ $pay->payment_status }}
+                                                            </span>
+                                                        @endif
+                                                        @if ($pay->payment_status == 'Ditolak')
+                                                            <span class="status-oren"> {{ $pay->payment_status }}
+                                                            </span>
+                                                        @endif
+                                                        @if ($pay->payment_status == 'Terbayar')
+                                                            <span class="status-hijau">{{ $pay->payment_status }}
+                                                            </span>
+                                                        @endif
+                                                    </div>
                                                 </td>
                                                 <td>
-                                                    <a href="{{ route('pembayaran-edit', $pay->id) }}" class="btn btn-warning text-white">Detail</a>
+                                                    <a href="{{ route('pembayaran-edit', $pay->id) }}" class="btn btn-primary">Detail</a>
                                                 </td>
                                         </tr>
                                     @empty

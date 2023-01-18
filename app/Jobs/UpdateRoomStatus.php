@@ -32,15 +32,15 @@ class UpdateRoomStatus implements ShouldQueue
      */
     public function handle()
     {
-        Room::where('room_status', 'Tidak Ada')
+        Room::where('room_status', 'Terpesan')
             ->whereHas('reservations', function(Builder $query){
                 $query->whereRaw('case 
-                                    when (period = "tahunan")
+                                    when (period = "Tahunan")
                                     then stay_date <= date_sub(date(now()), INTERVAL 1 Year)
-                                    when (period = "bulanan")
+                                    when (period = "Bulanan")
                                     then stay_date <= date_sub(date(now()), INTERVAL 1 Month)
                                 end')
-                        ->where('reservation_status', 'diterima');
+                        ->where('reservation_status', 'Diterima');
             })
             ->update(['room_status' => 'Ada']);
     }

@@ -35,13 +35,13 @@ class UpdatePaymentStatus implements ShouldQueue
     {
         $data = Payment::where('payment_status', '!=', 'Terbayar')
                 ->whereHas('reservations', function(Builder $query){
-                    $query->whereRaw('stay_date < date_sub(date(now()), INTERVAL 3 Day)')
+                    $query->whereRaw('created_at < date_sub(date(now()), INTERVAL 3 Day)')
                             ->where('reservation_status', 'Diterima');
                 })
                 ->update(['payment_status' => 'Gagal']);
         Room::where('id', $data->room_id)
             ->update([
-                'room_status' => 'Tidak_ada'
+                'room_status' => 'Terpesan'
             ]);
     }
 }

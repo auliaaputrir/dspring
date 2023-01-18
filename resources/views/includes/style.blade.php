@@ -91,6 +91,12 @@
         background-color: #f44336;
         color: white;
     }
+    .status-biru{
+        padding: 8px;
+        border-radius: 5px;
+        background-color: #36a8f4;
+        color: white;
+    }
     .status-kuning{
         padding: 8px;
         border-radius: 5px;
