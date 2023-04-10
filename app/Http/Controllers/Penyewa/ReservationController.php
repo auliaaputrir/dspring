@@ -34,8 +34,9 @@ class ReservationController extends Controller
       'period' => 'required|max:255',
       'stay_date' => 'required|after:'.$min
     ]);
-    
+    // dd(Auth::user('name')->name);
     $data = Reservation::create([
+      'name' => Auth::user('name')->name,
       'room_id' => $request->room_number,
       'user_id' => Auth::id(),
       'period' => $request->period,

@@ -25,6 +25,9 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title py-2">Daftar Reservasi</h3>
+                                <div class="float-sm-right">
+                                    <a href="{{ route('reservasi-create') }}" class="btn status-hijau"><i class="fas fa-plus" style="paddimg-right:10px;" > Tambah Data</i></a>
+                                </div>
                             </div>
 
                             <div class="card-body">
@@ -73,7 +76,8 @@
                                     <thead>
                                         <th>No</th>
                                         <th>Nomor Kamar</th>
-                                        <th>Nama</th>
+                                        <th>Id User</th>
+                                        <TH>Nama</TH>
                                         <th>Periode</th>
                                         <th>Tanggal Masuk</th>
                                         <th>Status</th>
@@ -84,7 +88,8 @@
                                             @forelse ($reservasi as $r)
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $r->rooms->room_number }}</td>
-                                                <td>{{ $r->users->name }}</td>
+                                                <td>{{ $r->users->id }}</td>
+                                                <td>{{ $r->name }}</td>
                                                 <td>{{ $r->period }}</td>
                                                 <td>{{ $r->stay_date }}</td>
                                                 <td>

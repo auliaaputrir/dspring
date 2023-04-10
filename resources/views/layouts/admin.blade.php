@@ -4,7 +4,8 @@
 <head>
     <link rel="shortcut icon" href="{{ url('assets/dist/img/logo.png') }}" type="image/x-icon">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>D'Spring Kos | Admin</title>
 
     <!-- Google Font: Source Sans Pro -->

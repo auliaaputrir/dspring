@@ -55,7 +55,7 @@
                                         :
                                     </div>
                                     <div class="col-8">
-                                        {{ $r->users->name }}
+                                        {{ $r->name }}
                                     </div>
                                 </div>
                                 <div class="row">

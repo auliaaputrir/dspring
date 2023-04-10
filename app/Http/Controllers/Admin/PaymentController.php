@@ -51,4 +51,20 @@ class PaymentController extends Controller
         Mail::to($reservasi->users->email)->send(new NotificationEmail($reservasi));
         return redirect(route('pembayaran-edit', $payment->id));
     }
+    public function search(Request $request)
+    {
+        $all = Payment::all();
+        $request->validate([
+            'startdate' => 'required|date',
+            'enddate' => 'required|date'
+        ]);
+        $startdate = date('Y-m-d', strtotime($request->startdate));
+        $enddate = date('Y-m-d', strtotime($request->enddate));
+
+        $payment = Payment::select("*")
+                    ->whereBetween('updated_at', [$startdate, $enddate])
+                    ->get();
+                    // dd($payment);
+        return view ('pages.admin.pembayaran.index', compact('payment'));
+    }
 }

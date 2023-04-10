@@ -26,8 +26,32 @@
                             <div class="card-header">
                                 <h3 class="card-title py-2">Daftar Pembayaran</h3>
                             </div>
-
                             <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4">
+                                    <form method="get" action="{{ route('pembayaran-search') }}" id="form">
+                                        @csrf
+                                        <div class="form-group">
+                                          <label for="startdate">Tanggal Awal</label>
+                                            <div class="input-group date" id="startdate" data-target-input="nearest">
+                                                <input type="date" name="startdate"  class="form-control filter" required>
+                                            </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-lg-4 col-md-4">
+                                        <div class="form-group">
+                                          <label for="enddate">Tanggal Akhir</label>
+                                            <div class="input-group date" id="enddate" data-target-input="nearest">
+                                                <input type="date" name="enddate" class="form-control filter" required>
+                                            </div>
+                                        </div>
+                                      </div>
+                                        <div class="col mt-4">
+                                          <button type="submit" class="btn btn-primary">Cari</button>
+                                        </div>
+                                    </form> 
+                                </div>
+                                
                                 <div class="row">
                                     <div class="col-lg-4 col-md-12 col-sm-12">
                                         @if ($message = Session::get('success'))
@@ -132,10 +156,16 @@
     </div>
 @endsection
 @push('script')
-    <script type="text/javascript">
-        $(document).ready(function() {
-            var table = $('#datatable').DataTable();
+<script>
 
-        });
-    </script>
+$(document).ready(function() {
+    var table = $('#datatable').DataTable( {
+        lengthChange: false,
+        buttons: [ 'print', 'excel', 'pdf']
+    } );
+ 
+    table.buttons().container()
+        .appendTo( '#datatable_wrapper .col-md-6:eq(0)' );
+} );
+</script>
 @endpush

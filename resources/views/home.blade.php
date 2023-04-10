@@ -400,9 +400,42 @@
                             </div>
                         </div>
                         <div class="form-group text-center">
-                            <button class="btn btn-primary" style="width: 150px;" type='submit'> Pesan</button>
+                            {{-- <button class="btn btn-primary" style="width: 150px;" type='submit'> --}}
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong"> Pesan</button>
                         </div>
-
+                        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLongTitle">Syarat dan Ketentuan D'Spring Kost</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                    <ol>
+                                        <li>Penyewa kos bertanggung jawab atas barang miliknya masing-masing</li>
+                                        <li>Menjaga ketenangan dan kenyaman bersama dengan tidak membuat kegaduhan dan saling menghormati penghuni kost yang lain</li>
+                                        <li>Menjaga kebersihan dan kenyamanan bersama dengan membersihkan dan merapikan kembali setelah menggunakan fasilitas bersama di dalam kost</li>
+                                        <li>Tidak menggunakan tempat kost untuk melakukan hal-hal yang bertentangan dengan hukum dan norma-norma yang berlaku di masyarakat umum</li>
+                                        <li>Menggunakan dan menjaga inventaris kost dengan baik dan tidak melakukan perubahan rumah kost (contohnya memaku tembok, mencoret-coret tembok dan furnitur)</li>
+                                        <li>Parkirlah kendaraan Anda dengan rapi dan berada di dalam area kost sehingga tidak menganggu pengguna jalan yang lain</li>
+                                        <li>Tidak menyimpan barang-barang berbahaya (senjata api, bahan mudah terbakar) dan barang-barang yang dilarang (narkoba, miras)</li>
+                                        <li>Dilarang membawa tamu laki-laki kedalam kos</li>
+                                        <li>Menghemat pemakaian air, listrik, dan gas demi lingkungan yang lebih baik</li>
+                                        <li>Dalam hal penyewa telah mendapatkan 3 kali teguran dan tetap tidak mentaati syarat dan ketentuan ini, maka pengelola kos berhak menghentikan perjanjian sewa dan mengelurkan penyewa dari rumah kos.</li>
+                                    </ol>
+                                </div>
+                                <div class="modal-footer">
+                                    <label for="myCheck">Saya menyetujui syarat dan ketentuan yang berlaku</label>
+                                    <input type="checkbox" id="myCheck" onclick="myFunction()">
+                        
+                        
+                                  <button class="btn btn-primary" id="text" style="width: 150px; display:none;" type='submit'> Pesan </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                     </form>
                 </div>
             </div>
@@ -448,6 +481,8 @@
 
                 </div>
     </section>
+    <!-- Modal -->
+
     <section id="footer" class=" section-bg mb-3 mt-5">
         <div class="container">
             <div class="copyright">
@@ -468,6 +503,21 @@
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+</script>
+<script>
+    function myFunction() {
+  // Get the checkbox
+  var checkBox = document.getElementById("myCheck");
+  // Get the output text
+  var text = document.getElementById("text");
+
+  // If the checkbox is checked, display the output text
+  if (checkBox.checked == true){
+    text.style.display = "block";
+  } else {
+    text.style.display = "none";
+  }
+}
 </script>
 <script>
     $(function() {
